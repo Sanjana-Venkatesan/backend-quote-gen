@@ -3,9 +3,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 
-const url =`mongodb://localhost:27017/moodtracker`
+const url =`mongodb+srv://sanjana:swapna528@cluster0.absjn.mongodb.net/moodtracker?retryWrites=true&w=majority`
 mongoose.set('strictQuery',false)
+
 mongoose.connect(url)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
+    process.exit(1);  
+  });
 
 // Middleware
 app.use(cors());
